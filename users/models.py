@@ -43,3 +43,15 @@ class Payment(models.Model):
 
     def __str__(self):
         return f'{self.user.email}: {self.course.name}'
+
+
+class Subscribe(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='subscribers',
+                             verbose_name='user')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='subscribers',
+                               verbose_name='course')
+    payment = models.ForeignKey(Payment, on_delete=models.CASCADE, related_name='subscribers',
+                                verbose_name='payment')
+
+    def __str__(self):
+        return f"{self.user.email}"

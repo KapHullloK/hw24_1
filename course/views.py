@@ -2,17 +2,20 @@ from rest_framework.generics import ListCreateAPIView, RetrieveAPIView, CreateAP
 from rest_framework.viewsets import ModelViewSet
 
 from course.models import Course, Lesson
+from course.paginators import CoursePaginator
 from course.serializers import CourseSerializer, LessonSerializer
 
 
 class CourseViewSet(ModelViewSet):
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
+    pagination_class = CoursePaginator
 
 
 class LessonList(ListCreateAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
+    pagination_class = CoursePaginator
 
 
 class LessonRetrieve(RetrieveAPIView):
