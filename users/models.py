@@ -40,6 +40,8 @@ class Payment(models.Model):
     amount = models.PositiveIntegerField(verbose_name="amount")
     payment_method = models.CharField(max_length=35, choices=PAYMENT_CHOICES,
                                       verbose_name="payment method")
+    session_id = models.CharField(max_length=255, verbose_name="session id", **NULLABLE)
+    url = models.CharField(max_length=455, verbose_name="url", **NULLABLE)
 
     def __str__(self):
         return f'{self.user.email}: {self.course.name}'

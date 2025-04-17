@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "course.apps.CourseConfig",
     'rest_framework',
     'django_filters',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 AUTH_USER_MODEL = 'users.User'
+
+STRIPE_KEY = os.getenv('STRIPE_KEY')
