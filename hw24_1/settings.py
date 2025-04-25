@@ -85,11 +85,11 @@ WSGI_APPLICATION = 'hw24_1.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('NAME'),
-        'USER': os.getenv('USER'),
-        'PASSWORD': os.getenv('PASSWORD'),
+        'NAME': os.getenv('POSTGRES_DB'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
         'HOST': os.getenv('HOST'),
-        'PORT': os.getenv('PORT'),
+        'PORT': os.getenv('POSTGRES_PORT'),
     }
 }
 
@@ -139,9 +139,9 @@ AUTH_USER_MODEL = 'users.User'
 
 STRIPE_KEY = os.getenv('STRIPE_KEY')
 
-CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_BROKER_URL = f'redis://{os.getenv("REDIS_HOST")}:6379'
 
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = f'redis://{os.getenv("REDIS_HOST")}:6379'
 
 CELERY_TIMEZONE = "Europe/Moscow"
 
